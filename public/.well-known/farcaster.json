@@ -1,0 +1,18 @@
+{
+  "account": {
+    "header": "eyJmaWQiOjQ0NjEsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgyODJkNWYzQmZjNzY5YTI3NjAxNDg3NzhBNzMzNDI5YmEzQWVmMjU2In0",
+    "payload": "eyJkb21haW4iOiJodHRwOi8vbG9jYWxob3N0OjMwMDAifQ",
+    "signature": "MHhiZGY5YTY0ZjgwYTcxMTk4MzlmYmE2ZDg2MzhmYTNkMjFlMGQyZTJmOThhY2ZiOGQxM2ZkYjAxM2QzOTQ3NzhhNGQ5MzE4MTQyOTMwMmY1ZGQwM2VmOTA2MTY4MWY3Zjk2MTg4ZTVjMWEzMjM2Yzk3ZTExNTQwZGVmOTlmNmZhNDFi"
+  },
+  "frame": {
+    "version": "1",
+    "name": "MiniApp Template",
+    "iconUrl": "https://miniapps.builders.garden/images/icon.png",
+    "homeUrl": "https://miniapps.builders.garden",
+    "imageUrl": "https://miniapps.builders.garden/images/feed.png",
+    "buttonTitle": "Press Me",
+    "splashImageUrl": "https://miniapps.builders.garden/images/splash.png",
+    "splashBackgroundColor": "#ffffff",
+    "webhookUrl": "https://miniapps.builders.garden/api/webhook"
+  }
+}

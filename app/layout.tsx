@@ -4,6 +4,7 @@ import "./globals.css";
 import MiniKitProvider from "@/components/minikit-provider";
 import dynamic from "next/dynamic";
 import NextAuthProvider from "@/components/next-auth-provider";
+import { FrameProvider } from "@/components/farcaster-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,9 +29,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <NextAuthProvider>
           <ErudaProvider>
-            <MiniKitProvider>
-              {children}
-            </MiniKitProvider>
+            <FrameProvider>
+              <MiniKitProvider>{children}</MiniKitProvider>
+            </FrameProvider>
           </ErudaProvider>
         </NextAuthProvider>
       </body>

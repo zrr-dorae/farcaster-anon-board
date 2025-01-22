@@ -1,13 +1,36 @@
-import { PayBlock } from "@/components/Pay";
-import { SignIn } from "@/components/SignIn";
-import { VerifyBlock } from "@/components/Verify";
+import { Metadata } from "next";
+import App from "./app";
+
+const appUrl = process.env.NEXT_PUBLIC_URL;
+
+const frame = {
+  version: "next",
+  imageUrl: `${appUrl}/images/feed.png`,
+  button: {
+    title: "Press Me",
+    action: {
+      type: "launch_frame",
+      name: "Mini-app Starter",
+      url: appUrl,
+      splashImageUrl: `${appUrl}/images/splash.png`,
+      splashBackgroundColor: "#f7f7f7",
+    },
+  },
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Mini-app Starter",
+    openGraph: {
+      title: "Mini-app Starter",
+      description: "A starter for mini-apps",
+    },
+    other: {
+      "fc:frame": JSON.stringify(frame),
+    },
+  };
+}
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 gap-y-3">
-      <SignIn />
-      <VerifyBlock />
-      <PayBlock />
-    </main>
-  );
+  return <App />;
 }
