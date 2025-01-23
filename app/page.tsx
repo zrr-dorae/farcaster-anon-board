@@ -7,7 +7,7 @@ const frame = {
   version: "next",
   imageUrl: `${appUrl}/images/feed.png`,
   button: {
-    title: "Press Me",
+    title: "Launch App",
     action: {
       type: "launch_frame",
       name: "Mini-app Starter",
