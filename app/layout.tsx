@@ -27,13 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextAuthProvider>
           <ErudaProvider>
             <FrameProvider>
               <MiniKitProvider>{children}</MiniKitProvider>
             </FrameProvider>
           </ErudaProvider>
-        </NextAuthProvider>
       </body>
     </html>
   );
