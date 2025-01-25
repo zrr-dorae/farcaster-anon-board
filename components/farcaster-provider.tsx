@@ -2,7 +2,6 @@
 
 import {
   FrameContext,
-  SafeAreaInsets,
 } from "@farcaster/frame-core/dist/context";
 import sdk from "@farcaster/frame-sdk";
 import {
