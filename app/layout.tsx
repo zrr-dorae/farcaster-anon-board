@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import MiniKitProvider from "@/components/minikit-provider";
 import dynamic from "next/dynamic";
-import NextAuthProvider from "@/components/next-auth-provider";
 import { FrameProvider } from "@/components/farcaster-provider";
 
 const inter = Inter({ subsets: ["latin"] });
