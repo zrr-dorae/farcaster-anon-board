@@ -1,8 +1,6 @@
 "use client";
 
-import {
-  FrameContext,
-} from "@farcaster/frame-core/dist/context";
+import { FrameContext } from "@farcaster/frame-core/dist/context";
 import sdk from "@farcaster/frame-sdk";
 import {
   createContext,
@@ -16,6 +14,7 @@ interface FrameContextValue {
   context: FrameContext | null;
   isSDKLoaded: boolean;
   error: string | null;
+  actions: typeof sdk.actions | null;
 }
 
 const FrameProviderContext = createContext<FrameContextValue | undefined>(
@@ -36,6 +35,7 @@ interface FrameProviderProps {
 
 export function FrameProvider({ children }: FrameProviderProps) {
   const [context, setContext] = useState<FrameContext | null>(null);
+  const [actions, setActions] = useState<typeof sdk.actions | null>(null);
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -45,6 +45,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
         const context = await sdk.context;
         if (context) {
           setContext(context as FrameContext);
+          setActions(sdk.actions);
         } else {
           setError("Failed to load Farcaster context");
         }
@@ -67,6 +68,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
 
   const value = {
     context,
+    actions,
     isSDKLoaded,
     error,
   };

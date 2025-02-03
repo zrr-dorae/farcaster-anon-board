@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import App from "@/components/pages/app";
 import { env } from "@/lib/env";
+import PresavePage from "@/components/pages/presave";
 
 const appUrl = env.NEXT_PUBLIC_URL;
 
@@ -32,6 +32,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Home() {
-  return <App />;
+export default function Presave() {
+  return <PresavePage />;
 }

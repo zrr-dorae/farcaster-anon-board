@@ -1,6 +1,7 @@
 "use client";
 
 import { useSignIn } from "@/hooks/use-sign-in";
+import Link from "next/link";
 
 export default function Home() {
   const { signIn, isLoading } = useSignIn();
@@ -18,6 +19,9 @@ export default function Home() {
           {isLoading ? "Signing in..." : "Sign in"}
         </button>
       </div>
+      <Link href="/presave" className="text-lg text-muted-foreground mt-4">
+        Go to Presave
+      </Link>
     </div>
   );
 }

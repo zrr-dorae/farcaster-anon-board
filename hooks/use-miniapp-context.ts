@@ -1,6 +1,7 @@
 import { useFrame } from "../components/farcaster-provider";
 import { MiniKit } from "@worldcoin/minikit-js";
 import { FrameContext } from "@farcaster/frame-core/dist/context";
+import sdk from "@farcaster/frame-sdk";
 
 export enum ContextType {
   Farcaster = "farcaster",
@@ -11,16 +12,19 @@ export enum ContextType {
 interface FarcasterContextResult {
   type: ContextType.Farcaster;
   context: FrameContext;
+  actions: typeof sdk.actions | null;
 }
 
 interface WorldcoinContextResult {
   type: ContextType.Worldcoin;
   context: MiniKit;
+  actions: null;
 }
 
 interface NoContextResult {
   type: null;
   context: null;
+  actions: null;
 }
 
 // Union type of all possible results
@@ -37,6 +41,7 @@ export const useMiniAppContext = (): ContextResult => {
       return {
         type: ContextType.Farcaster,
         context: farcasterContext.context,
+        actions: farcasterContext.actions,
       } as FarcasterContextResult;
     }
   } catch (e) {
@@ -48,6 +53,7 @@ export const useMiniAppContext = (): ContextResult => {
     return {
       type: ContextType.Worldcoin,
       context: MiniKit,
+      actions: null,
     } as WorldcoinContextResult;
   }
 
@@ -55,5 +61,6 @@ export const useMiniAppContext = (): ContextResult => {
   return {
     type: null,
     context: null,
+    actions: null,
   } as NoContextResult;
 };
