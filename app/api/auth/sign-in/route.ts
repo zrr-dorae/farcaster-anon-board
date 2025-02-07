@@ -1,16 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import * as jose from "jose";
+import { verifyMessage } from "viem";
 
 export const POST = async (req: NextRequest) => {
   const { fid, walletAddress, signature, message } = await req.json();
 
-  console.log({
-    fid,
-    walletAddress,
-    signature,
+  // Verify signature matches custody address
+  const isValidSignature = await verifyMessage({
+    address: walletAddress as `0x${string}`,
     message,
+    signature,
   });
+
+  if (!isValidSignature) {
+    return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+  }
 
   // Generate JWT token
   const secret = new TextEncoder().encode(process.env.JWT_SECRET);
