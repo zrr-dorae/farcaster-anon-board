@@ -59,6 +59,7 @@ export const useSignIn = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify({
           signature: result.signature,
           message: result.message,
@@ -76,10 +77,7 @@ export const useSignIn = () => {
       }
 
       const data = await res.json();
-      localStorage.setItem("token", data.token);
       setIsSignedIn(true);
-      // TODO: install posthog to activate this
-      // posthog.identify(context.user.fid.toString());
       return data;
     } catch (err) {
       const errorMessage =
@@ -91,9 +89,16 @@ export const useSignIn = () => {
     }
   }, [context, contextType]);
 
-  const logout = useCallback(() => {
-    localStorage.removeItem("token");
-    setIsSignedIn(false);
+  const logout = useCallback(async () => {
+    try {
+      await fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      setIsSignedIn(false);
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
   }, []);
 
   return { signIn, logout, isSignedIn, isLoading, error };
