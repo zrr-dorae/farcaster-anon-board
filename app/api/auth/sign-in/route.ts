@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import * as jose from "jose";
 
 export const POST = async (req: NextRequest) => {
   const { fid, walletAddress, signature, message } = await req.json();
@@ -11,16 +12,21 @@ export const POST = async (req: NextRequest) => {
     message,
   });
 
+  // Generate JWT token
+  const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+  const token = await new jose.SignJWT({ fid, walletAddress })
+    .setProtectedHeader({ alg: "HS256" })
+    .setIssuedAt()
+    .setExpirationTime("7d")
+    .sign(secret);
+
   // Create the response
   const response = NextResponse.json({ success: true });
 
-  // Set the auth cookie
-  // Using httpOnly for security, secure for HTTPS only
-  // SameSite=None allows the cookie to be sent in cross-origin requests
-  // maxAge is set to 7 days (in seconds)
+  // Set the auth cookie with the JWT token
   response.cookies.set({
     name: "auth_token",
-    value: "your_generated_token_here", // Replace with actual token generation
+    value: token,
     httpOnly: true,
     secure: true,
     sameSite: "none",
