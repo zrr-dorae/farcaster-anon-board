@@ -2,9 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import * as jose from "jose";
 import { verifyMessage } from "viem";
+import { fetchUser } from "@/lib/neynar";
+import { env } from "@/lib/env";
 
 export const POST = async (req: NextRequest) => {
-  const { fid, walletAddress, signature, message } = await req.json();
+  let { fid, walletAddress, signature, message } = await req.json();
+
+  // We don't have the user address in the Farcaster case
+  if (!walletAddress) {
+    const user = await fetchUser(fid);
+    walletAddress = user.custody_address;
+  }
 
   // Verify signature matches custody address
   const isValidSignature = await verifyMessage({
@@ -18,7 +26,7 @@ export const POST = async (req: NextRequest) => {
   }
 
   // Generate JWT token
-  const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+  const secret = new TextEncoder().encode(env.JWT_SECRET);
   const token = await new jose.SignJWT({ fid, walletAddress })
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
