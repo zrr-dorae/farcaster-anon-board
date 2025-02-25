@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as jose from "jose";
+import { env } from "./lib/env";
 
 export const config = {
   matcher: ["/api/:path*"],
@@ -26,7 +27,7 @@ export default async function middleware(req: NextRequest) {
   }
 
   try {
-    const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+    const secret = new TextEncoder().encode(env.JWT_SECRET);
     // Verify the token using jose
     const { payload } = await jose.jwtVerify(token, secret);
 
