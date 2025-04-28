@@ -1,15 +1,14 @@
-import { env } from "@/lib/env";
-import { frameConnector } from "@/lib/frame-connector";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { farcasterFrame } from "@farcaster/frame-wagmi-connector";
 import { createConfig, http, WagmiProvider } from "wagmi";
-import { baseSepolia } from "wagmi/chains";
+import { monadTestnet } from "wagmi/chains";
 
 export const config = createConfig({
-  chains: [baseSepolia],
+  chains: [monadTestnet],
   transports: {
-    [baseSepolia.id]: http(),
+    [monadTestnet.id]: http(),
   },
-  connectors: [frameConnector()],
+  connectors: [farcasterFrame()],
 });
 
 const queryClient = new QueryClient();

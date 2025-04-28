@@ -14,6 +14,7 @@ import FrameWalletProvider from "./frame-wallet-provider";
 interface FrameContextValue {
   context: FrameContext | null;
   isSDKLoaded: boolean;
+  isEthProviderAvailable: boolean;
   error: string | null;
   actions: typeof sdk.actions | null;
 }
@@ -37,6 +38,7 @@ interface FrameProviderProps {
 export function FrameProvider({ children }: FrameProviderProps) {
   const [context, setContext] = useState<FrameContext | null>(null);
   const [actions, setActions] = useState<typeof sdk.actions | null>(null);
+  const [isEthProviderAvailable, setIsEthProviderAvailable] = useState<boolean>(false);
   const [isSDKLoaded, setIsSDKLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -47,6 +49,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
         if (context) {
           setContext(context as FrameContext);
           setActions(sdk.actions);
+          setIsEthProviderAvailable(sdk.wallet.ethProvider ? true : false);
         } else {
           setError("Failed to load Farcaster context");
         }
@@ -71,6 +74,7 @@ export function FrameProvider({ children }: FrameProviderProps) {
     context,
     actions,
     isSDKLoaded,
+    isEthProviderAvailable,
     error,
   };
 

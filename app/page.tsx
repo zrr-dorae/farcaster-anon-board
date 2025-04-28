@@ -8,10 +8,10 @@ const frame = {
   version: "next",
   imageUrl: `${appUrl}/images/feed.png`,
   button: {
-    title: "Launch App",
+    title: "Launch Template",
     action: {
       type: "launch_frame",
-      name: "Mini-app Starter",
+      name: "Monad Farcaster MiniApp Template",
       url: appUrl,
       splashImageUrl: `${appUrl}/images/splash.png`,
       splashBackgroundColor: "#f7f7f7",
@@ -21,10 +21,10 @@ const frame = {
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Mini-app Starter",
-    openGraph: {
-      title: "Mini-app Starter",
-      description: "A starter for mini-apps",
+    title: "Monad Farcaster MiniApp Template",
+    openGraph: {  
+      title: "Monad Farcaster MiniApp Template",
+      description: "A template for building mini-apps on Farcaster and Monad",
     },
     other: {
       "fc:frame": JSON.stringify(frame),
