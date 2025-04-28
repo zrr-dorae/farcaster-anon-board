@@ -11,14 +11,14 @@ export async function GET() {
     frame: {
       version: "1",
       name: "Monad Farcaster MiniApp Template",
-      iconUrl: `${appUrl}/icon.png`,
+      iconUrl: `${appUrl}/images/icon.png`,
       homeUrl: `${appUrl}`,
-      imageUrl: `${appUrl}/feed.png`,
+      imageUrl: `${appUrl}/images/feed.png`,
       screenshotUrls: [],
       tags: ["monad", "farcaster", "miniapp", "template"],
       primaryCategory: "developer-tools",
       buttonTitle: "Launch Template",
-      splashImageUrl: `${appUrl}/splash.png`,
+      splashImageUrl: `${appUrl}/images/splash.png`,
       splashBackgroundColor: "#ffffff",
       webhookUrl: `${appUrl}/api/webhook`
     }
