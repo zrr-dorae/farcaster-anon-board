@@ -107,9 +107,9 @@ You can either edit the URLs for the images or replace the images in `public/ima
 
 Once you are happy with the changes, click `Refetch` in the Embed tool to get the latest configuration.
 
-:::note
-If you are developing locally, ensure that your Next.js app is running locally and the cloudflare tunnel is open. 
-:::
+> [!NOTE]
+> If you are developing locally, ensure that your Next.js app is running locally and the cloudflare tunnel is open. 
+
 
 ## Customizing the Splash Screen
 
@@ -233,8 +233,8 @@ export function WalletActions() {
 }
 ```
 
-:::warning
-The Warpcast wallet supports multiple networks. It is recommended that you ensure that the right network is connected before prompting wallet actions.
+> [!WARNING]
+> The Warpcast wallet supports multiple networks. It is recommended that you ensure that the right network is connected before prompting wallet actions.
 
 You can use viem's `switchChain` or equivalent to prompt a chain switch.
 
