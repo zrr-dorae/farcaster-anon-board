@@ -148,7 +148,8 @@ For `splashImageUrl`, you can either change the URL or replace the image in `pub
 
 Upon opening the template Mini App, you should see a screen like this:
 
-![miniapp](https://docs.monad.xyz/img/guides/farcaster-miniapp/4.png)
+<img width="1512" alt="4" src="https://github.com/user-attachments/assets/259a3dd2-17ee-4afd-8942-ad83a92f6335" />
+
 
 The code for this screen is in the `components/pages/app.tsx` file:
 
@@ -169,7 +170,8 @@ You can remove or edit the code in this file to build your Mini App.
 
 ### Accessing User Context
 
-![user-context](https://docs.monad.xyz/img/guides/farcaster-miniapp/5.png)
+<img width="1130" alt="5" src="https://github.com/user-attachments/assets/4448c141-d159-4538-abda-a175d02330a7" />
+
 
 Your Mini App receives various information about the user, including `username`, `fid`, `displayName`, `pfpUrl` and other fields.
 
@@ -210,7 +212,7 @@ An example for the same can be found in `components/Home/FarcasterActions.tsx` f
 
 ### Prompting Wallet Actions
 
-![wallet-actions](https://docs.monad.xyz/img/guides/farcaster-miniapp/6.png)
+<img width="1130" alt="6" src="https://github.com/user-attachments/assets/7dc46f05-bcbb-43b4-a0e6-4f421648dfc6" />
 
 Every user of Warpcast has a Warpcast wallet with Monad Testnet support.
 
