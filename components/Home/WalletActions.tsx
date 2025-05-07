@@ -3,10 +3,12 @@ import { parseEther } from "viem";
 import { monadTestnet } from "viem/chains";
 import {
   useAccount,
+  useConnect,
   useDisconnect,
   useSendTransaction,
   useSwitchChain,
 } from "wagmi";
+import { farcasterFrame } from "@farcaster/frame-wagmi-connector";
 
 export function WalletActions() {
   const { isEthProviderAvailable } = useMiniAppContext();
@@ -14,6 +16,7 @@ export function WalletActions() {
   const { disconnect } = useDisconnect();
   const { data: hash, sendTransaction } = useSendTransaction();
   const { switchChain } = useSwitchChain();
+  const { connect } = useConnect();
 
   async function sendTransactionHandler() {
     sendTransaction({
@@ -82,7 +85,16 @@ export function WalletActions() {
             </button>
           </div>
         ) : (
-          !isEthProviderAvailable && (
+          isEthProviderAvailable ?
+          (
+            <button
+              className="bg-white text-black w-full rounded-md p-2 text-sm"
+              onClick={() => connect({ connector: farcasterFrame() })}
+            >
+              Connect Wallet
+            </button>
+          ) :
+          (
             <p className="text-sm text-left">
               Wallet connection only via Warpcast
             </p>
