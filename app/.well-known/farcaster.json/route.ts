@@ -4,21 +4,24 @@ import { APP_URL } from "../../../lib/constants";
 export async function GET() {
   const farcasterConfig = {
     // TODO: Add account association
-    frame: {
-      version: "1",
-      name: "Monad Farcaster MiniApp Template",
-      iconUrl: `${APP_URL}/images/icon.png`,
-      homeUrl: `${APP_URL}`,
-      imageUrl: `${APP_URL}/images/feed.png`,
-      screenshotUrls: [],
-      tags: ["monad", "farcaster", "miniapp", "template"],
-      primaryCategory: "developer-tools",
-      buttonTitle: "Launch Template",
-      splashImageUrl: `${APP_URL}/images/splash.png`,
-      splashBackgroundColor: "#ffffff",
-      webhookUrl: `${APP_URL}/api/webhook`,
-    },
-  };
+
+      "accountAssociation": {
+        "header": "eyJmaWQiOjEwODU4NTYsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHg3MDNjOTdGNDBjMkE3ZWY2NDlkMzNhNUZjNkYwMzM0RTViNGU4MWYxIn0",
+        "payload": "eyJkb21haW4iOiJmYXJjYXN0ZXItYW5vbi1ib2FyZC52ZXJjZWwuYXBwIn0",
+        "signature": "MHhlYTE4OGNkNzY2ODZhMDE2OGFhNjgxMWJkYzIwYzBkNTk3MzFlNjBmOWFkMzBjMmNjNDA2YmQzMjc4MzRjZmU2NWY5OTRhNTU3MzMxODRkNTEwZjQ0OGU4ZWE2YjMwZDRjMjhiZDU5NTU3YWJkNzk1ZDViNDU2ZDkzM2Y5YWE0MDFj"
+      },
+      "frame": {
+        "version": "1",
+        "name": "Anonymous Balloon Board 🎈",
+        "iconUrl": "https://farcaster-anon-board.vercel.app/icon.png",
+        "homeUrl": "https://farcaster-anon-board.vercel.app",
+        "imageUrl": "https://farcaster-anon-board.vercel.app/banner.png",
+        "splashImageUrl": "https://farcaster-anon-board.vercel.app/splash.png",
+        "splashBackgroundColor": "#ffdde1",
+        "buttonTitle": "Join the Balloon Board",
+        "webhookUrl": "https://farcaster-anon-board.vercel.app/api/webhook"
+      }
+    }
 
   return NextResponse.json(farcasterConfig);
 }
