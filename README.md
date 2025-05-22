@@ -292,3 +292,4 @@ In this guide, you explored Farcaster Mini Apps — the simplest way to create e
 You also discovered the key capabilities of Mini Apps and how you can use the [Monad Farcaster MiniApp Template](https://github.com/monad-developers/monad-miniapp-template) to build your own.
 
 For more details, check out the official Mini App documentation [here](https://miniapps.farcaster.xyz/).
+// trigger redeploy
